@@ -11,3 +11,5 @@
  ---
  - [x] [Exercícios da 6ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/006_SextaSemana_USP)  
  ---
+ - [x] [Exercícios da 7ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/007_SextaSemana_USP)  
+ ---
