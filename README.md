@@ -1,4 +1,4 @@
-# Exercícios do curso: Introdução à Ciência da Computação com Python Parte 1
+# :hammer_and_wrench: Exercícios do curso: Introdução à Ciência da Computação com Python Parte 1
  **Conteúdo para fins educacionais**
  ### Exercícios concluídos:
  - [x] [Exercícios da 2ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/002_SegundaSemana_USP)
