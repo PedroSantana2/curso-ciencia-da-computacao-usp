@@ -9,3 +9,5 @@
  ---
  - [x] [Exercícios da 5ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/005_QuintaSemana_USP)
  ---
+ - [x] [Exercícios da 6ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/006_SextaSemana_USP)  
+ ---
