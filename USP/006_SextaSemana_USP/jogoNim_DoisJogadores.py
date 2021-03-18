@@ -25,26 +25,28 @@ Dado que é possível jogar partidas individuais ou campeonatos, seu programa de
 Atenção: o corretor automático vai verificar se você está utilizando exatamente as mensagens pedidas, como "Você começa!", "O computador ganhou!" etc. Deixe para usar a sua criatividade em outros lugares!
 '''
 
-import sys
+import sys, random
 #Definindo funções:
 
 # p = peças totais | mr = maior_retirada
 
 #Calcula qual será a quantidade de peças que o computador jogará de acordo com o enunciado:
-def computador_escolhe_jogada(p, mr):
-    resposta = p
+def s_jogador_escolhe_jogada(p, mr):
+    print('\n\t[ ! ] Jogador 2!')
+    valor = int(input('\t[ ? ] Quantas peças você vai tirar\n=> '))
 
-    if p % (mr + 1) > 0:
-        resposta = p % (mr + 1)
+    #Mensagem de erro para valores não aceitos:
+    while valor <= 0 or valor > mr or valor > p:
+        print('\n\t[ ⚠ ] Oops! Jogada inválida! Tente de novo.')
+        valor = int(input('\n\t[ ? ] Quantas peças você vai tirar\n=> '))
 
-    else: 
-        resposta = mr
-
-    return resposta
+    #Caso esteja tudo certo, a função devolve o valor determinado pelo usuário:
+    return valor
 
 #Recebe a quantidade de peças selecionadas pelo jogador:
-def usuario_escolhe_jogada(p, mr):
-    valor = int(input('\n\t[ ? ] Quantas peças você vai tirar\n=> '))
+def p_jogador_escolhe_jogada(p, mr):
+    print('\n\t[ ! ] Jogador 1!')
+    valor = int(input('\t[ ? ] Quantas peças você vai tirar\n=> '))
 
     #Mensagem de erro para valores não aceitos:
     while valor <= 0 or valor > mr or valor > p:
@@ -71,9 +73,9 @@ def partida():
         print('\n\t[ ⚠ ] A quantidade de peças por jogadas devem ser menor ou igual as peças totais.')
         mr = int(input('\n\t[ ? ] Limite de peças por jogada\n=> '))
         
-    #Calculando quem começará primeiro:
-    if (p % (mr + 1)) == 0:
-        print('\t[ 😎 ] Você começa!')
+    quem_inicia = random.randint(1, 2)
+    if quem_inicia == 1:
+        print('\t[ 😎 ] Jogador 1 começa!')
 
         # 1 = vez do usuário, 2 = vez do computador
         jogada = 1
@@ -82,8 +84,8 @@ def partida():
         while p > 0:
 
             if jogada == 1 :
-                result = usuario_escolhe_jogada(p, mr)
-                print('\n\t[ ! ] Você tirou', result, 'peça(s).')
+                result = p_jogador_escolhe_jogada(p, mr)
+                print('\n\t[ ! ] Jogador 1 tirou', result, 'peça(s).')
 
                 #Retirando a quantidade escolhida pelo usuário do todo:
                 p = p - result
@@ -93,8 +95,8 @@ def partida():
                 jogada = 2
 
             else:
-                result = computador_escolhe_jogada(p, mr)
-                print('\n\t[ ! ] O computador tirou', result, 'peça(s)')
+                result = s_jogador_escolhe_jogada(p, mr)
+                print('\n\t[ ! ] Jogador 2 tirou', result, 'peça(s)')
 
                 #Retirando a quantidade escolhida pelo computador do todo:
                 p = p - result
@@ -105,19 +107,19 @@ def partida():
 
         #Confere quem jogou por último e ganhou a partida:
         if jogada == 1:
-            print('\n\t[ 💻 ] Fim do jogo! O computador ganhou!\n')
+            print('\n\t[ 😀 ] Fim do jogo! Jogador 2 ganhou!\n')
 
             #Ponto do computador (Usado no campeonato):
             return 2 
 
         else:
-            print('\n\t[ 😎 ] Fim do jogo! O você ganhou!\n')
+            print('\n\t[ 😎 ] Fim do jogo! Jogador 1 ganhou!\n')
 
             #Ponto do jogador (Usado no campeonato):
             return 1 
 
     else:
-        print('\n\t[ ⚙ ] Computador começa!')
+        print('\n\t[ 😀 ] Jogador 2 começa!')
 
         # 1 = vez do usuário, 2 = vez do computador
         jogada = 2
@@ -126,8 +128,8 @@ def partida():
         while p > 0:
 
             if jogada == 2:
-                result = computador_escolhe_jogada(p, mr)
-                print('\n\t[ ! ] O computador tirou', result, 'peça(s).')
+                result = s_jogador_escolhe_jogada(p, mr)
+                print('\n\t[ ! ] Jogador 2 tirou', result, 'peça(s).')
 
                 #Retirando a quantidade escolhida pelo computador do todo:
                 p = p - result
@@ -137,8 +139,8 @@ def partida():
                 jogada = 1
 
             else:
-                result = usuario_escolhe_jogada(p, mr)
-                print('\n\t[ ! ] Você tirou', result, 'peça(s).')
+                result = p_jogador_escolhe_jogada(p, mr)
+                print('\n\t[ ! ] Jogador 1 tirou', result, 'peça(s).')
 
                 #Retirando a quantidade escolhida pelo usuário do todo:
                 p = p - result
@@ -148,13 +150,13 @@ def partida():
                 jogada = 2
 
         if jogada == 1:
-            print('\n\t[ 💻 ] Fim do jogo! O computador ganhou!')
+            print('\n\t[ 😀 ] Fim do jogo! Jogador 2 ganhou!')
 
             #Ponto do computador (Usado no campeonato):
             return 2
 
         else:
-            print('\n\t[ 😎 ]Fim do jogo! O você ganhou!')
+            print('\n\t[ 😎 ]Fim do jogo! Jogador 1 ganhou!')
 
             #Ponto do jogador (Usado no campeonato):
             return 1 
@@ -164,7 +166,7 @@ def campeonato():
     partidas = 1
 
     #Pontos do computador e do usuário:
-    pts_pc = pts_user = 0
+    pts_2 = pts_1 = 0
 
     #Limitador para acontecerem apenas 3 partidas:
     while partidas < 4:
@@ -172,18 +174,18 @@ def campeonato():
 
         #Caso o valor da partida retorne 1, significa que o usuário ganhou:
         if partida() == 1:
-            pts_user = pts_user + 1
+            pts_1 += 1
 
         #Caso contrário, significa que o computador venceu:
         else:
-            pts_pc = pts_pc + 1
+            pts_2 += 1
 
         #Contador aumenta em 1 a cada partida:
         partidas = partidas + 1
 
     #Resultados:
     print('\t[ 🥇 ] Final do campeonato!')
-    print('\t[ 🥇 ] Placar: Você', pts_user, 'X', pts_pc, 'Computador')
+    print('\t[ 🥇 ] Placar: Jogador 1:', pts_1, 'X', pts_2, 'Jogador 2')
 
 #Função para mostrar mensagem no final:
 def fim() :

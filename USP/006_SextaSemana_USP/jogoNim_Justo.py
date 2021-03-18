@@ -25,24 +25,17 @@ Dado que é possível jogar partidas individuais ou campeonatos, seu programa de
 Atenção: o corretor automático vai verificar se você está utilizando exatamente as mensagens pedidas, como "Você começa!", "O computador ganhou!" etc. Deixe para usar a sua criatividade em outros lugares!
 '''
 
-import sys
+import sys, random
 #Definindo funções:
 
 # p = peças totais | mr = maior_retirada
 
 #Calcula qual será a quantidade de peças que o computador jogará de acordo com o enunciado:
 def computador_escolhe_jogada(p, mr):
-    resposta = p
-
-    if p % (mr + 1) > 0:
-        resposta = p % (mr + 1)
-
-    else: 
-        resposta = mr
-
+    resposta = random.randint(1, mr)
     return resposta
 
-#Recebe a quantidade de peças selecionadas pelo jogador:
+#Recebe a quantidade de peças se1lecionadas pelo jogador:
 def usuario_escolhe_jogada(p, mr):
     valor = int(input('\n\t[ ? ] Quantas peças você vai tirar\n=> '))
 
@@ -72,7 +65,8 @@ def partida():
         mr = int(input('\n\t[ ? ] Limite de peças por jogada\n=> '))
         
     #Calculando quem começará primeiro:
-    if (p % (mr + 1)) == 0:
+    quem_inicia = random.randint(1, 2)
+    if quem_inicia == 1:
         print('\t[ 😎 ] Você começa!')
 
         # 1 = vez do usuário, 2 = vez do computador
