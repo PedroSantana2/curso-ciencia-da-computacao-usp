@@ -13,3 +13,5 @@
 ---
 - [x] [(Parte 1 ) Exercícios da 7ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/007_SetimaSemana_USP)  
 ---
+- [x] [(Parte 1 ) Exercícios da 8ª semana.](https://github.com/PedroSantana2/exercicios-ciencia-da-computacao-USP/tree/main/USP/008_OitavaSemana_USP)  
+---
